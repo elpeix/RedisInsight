@@ -10,15 +10,17 @@ interface HomeTab {
 const tabs: HomeTab[] = [
   {
     id: 'databases',
-    title: 'Redis Databases',
+    title: 'Databases',
     path: Pages.home
   },
+  /*
   {
     id: 'rdi-instances',
     title: 'Redis Data Integration',
     path: Pages.rdi,
     featureFlag: FeatureFlags.rdi
   }
+  */
 ]
 
 export {

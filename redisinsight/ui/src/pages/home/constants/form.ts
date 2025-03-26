@@ -34,7 +34,7 @@ export const fieldDisplayNames = {
 export const DEFAULT_TIMEOUT = getConfig().database.defaultConnectionTimeout
 
 export enum SubmitBtnText {
-  AddDatabase = 'Add Redis Database',
+  AddDatabase = 'Add Database',
   EditDatabase = 'Apply Changes',
   CloneDatabase = 'Clone Database'
 }

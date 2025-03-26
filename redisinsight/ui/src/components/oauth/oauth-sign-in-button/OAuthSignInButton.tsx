@@ -15,6 +15,8 @@ export interface Props {
 const OAuthSignInButton = (props: Props) => {
   const { source } = props
 
+  return <></>
+
   return (
     <OAuthSsoHandlerDialog>
       {(socialCloudHandlerClick) => (

@@ -59,6 +59,7 @@ const getFreeDbFlag = (
 const TELEMETRY_EMPTY_VALUE = 'none'
 
 const sendEventTelemetry = async ({ event, eventData = {}, traits = {} }: ITelemetrySendEvent) => {
+  return
   let providerData
   try {
     const isAnalyticsGranted = checkIsAnalyticsGranted()
@@ -80,6 +81,7 @@ const sendEventTelemetry = async ({ event, eventData = {}, traits = {} }: ITelem
 }
 
 const sendPageViewTelemetry = async ({ name, eventData = {} }: ITelemetrySendPageView) => {
+  return
   try {
     let providerData
     const isAnalyticsGranted = checkIsAnalyticsGranted()

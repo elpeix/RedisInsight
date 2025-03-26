@@ -322,10 +322,12 @@ const NavigationMenu = () => {
         {connectedRdiInstanceId && isRdiWorkspace && (privateRdiRoutes.map(renderNavItem))}
       </div>
       <div className={styles.bottomContainer}>
+        {/*
         <FeatureFlagComponent name={FeatureFlags.envDependent} enabledByDefault>
           <CreateCloud />
           <NotificationMenu />
         </FeatureFlagComponent>
+        */}
         <FeatureFlagComponent name={FeatureFlags.envDependent} enabledByDefault>
           <HelpMenu />
         </FeatureFlagComponent>

@@ -87,6 +87,7 @@ const ROUTES: IRoute[] = [
       path: Pages.redisEnterpriseAutodiscovery,
       component: LAZY_LOAD ? LazyRedisClusterDatabasesPage : RedisClusterDatabasesPage,
     },
+    /*
     {
       path: Pages.redisCloud,
       component: LAZY_LOAD ? LazyRedisCloudPage : RedisCloudPage,
@@ -105,6 +106,7 @@ const ROUTES: IRoute[] = [
         },
       ],
     },
+    */
     {
       path: Pages.rdi,
       component: LAZY_LOAD ? LazyRdiPage : RdiPage,

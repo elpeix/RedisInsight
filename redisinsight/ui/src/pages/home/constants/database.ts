@@ -1,8 +1,8 @@
 export enum AddDbType {
   manual,
-  cloud,
-  sentinel,
-  software,
+  // cloud,
+  // sentinel,
+  // software,
   import
 }
 

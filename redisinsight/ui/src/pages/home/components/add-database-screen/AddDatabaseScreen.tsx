@@ -172,10 +172,12 @@ const AddDatabaseScreen = (props: Props) => {
           </EuiFlexItem>
         </EuiFlexGroup>
       </EuiForm>
+      {/*}
       <EuiSpacer />
       <div className={styles.hr}>Or</div>
       <EuiSpacer />
       <ConnectivityOptions onClickOption={handleProceedForm} onClose={onClose} />
+      */}
     </div>
   )
 }

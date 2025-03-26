@@ -18,6 +18,7 @@ export interface Props {
 
 const PromoLink = (props: Props) => {
   const { title, description, url, onClick, testId, icon, styles: linkStyles } = props
+  return <></>
 
   return (
     <a

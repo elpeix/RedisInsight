@@ -85,6 +85,7 @@ $breakpoint-l: 1400px;
   }
 
   :global(.euiTableRow.cloudDbRow) {
+    display: none;
     cursor: pointer;
 
     :global(.euiTableRowCellCheckbox) {

@@ -18,6 +18,8 @@ const CopilotTrigger = () => {
     dispatch(toggleSidePanel(SidePanels.AiAssistant))
   }
 
+  return <></>
+
   return (
     <div
       className={cx(styles.container, {

@@ -10,6 +10,7 @@ export interface Props {
 
 const CloudLink = (props: Props) => {
   const { url, text } = props
+  return <></>
   return (
     <OAuthSsoHandlerDialog>
       {(ssoCloudHandlerClick) => (
