@@ -8,7 +8,10 @@ import {
 } from 'uiSrc/slices/instances/cluster'
 import { Nullable, setTitle } from 'uiSrc/utils'
 import { HomePageTemplate } from 'uiSrc/templates'
-import { BrowserStorageItem, FeatureFlags } from 'uiSrc/constants'
+import {
+  BrowserStorageItem,
+  // FeatureFlags
+} from 'uiSrc/constants'
 import { resetKeys } from 'uiSrc/slices/browser/keys'
 import {
   resetCliHelperSettings,
@@ -38,7 +41,7 @@ import {
   sentinelSelector,
 } from 'uiSrc/slices/instances/sentinel'
 import {
-  contentSelector,
+  // contentSelector,
   fetchContentAction as fetchCreateRedisButtonsAction,
 } from 'uiSrc/slices/content/create-redis-buttons'
 import {
@@ -52,8 +55,8 @@ import {
   setUrlHandlingInitialState,
 } from 'uiSrc/slices/app/url-handling'
 import { UrlHandlingActions } from 'uiSrc/slices/interfaces/urlHandling'
-import { CREATE_CLOUD_DB_ID } from 'uiSrc/pages/home/constants'
-import { appFeatureFlagsFeaturesSelector } from 'uiSrc/slices/app/features'
+// import { CREATE_CLOUD_DB_ID } from 'uiSrc/pages/home/constants'
+// import { appFeatureFlagsFeaturesSelector } from 'uiSrc/slices/app/features'
 
 import DatabasesList from './components/database-list-component'
 import DatabaseListHeader from './components/database-list-header'
@@ -77,7 +80,7 @@ const HomePage = () => {
   const { credentials: cloudCredentials } = useSelector(cloudSelector)
   const { instance: sentinelInstance } = useSelector(sentinelSelector)
   const { action, dbConnection } = useSelector(appRedirectionSelector)
-  const { data: createDbContent } = useSelector(contentSelector)
+  // const { data: createDbContent } = useSelector(contentSelector)
   // const {
   //   [FeatureFlags.enhancedCloudUI]: enhancedCloudUIFeature,
   //   [FeatureFlags.cloudAds]: cloudAdsFeature,
@@ -106,6 +109,7 @@ const HomePage = () => {
   //         } as Instance,
   //       ]
   //     : []
+  const predefinedInstances = [] as Instance[]
   const isInstanceExists =
     instances.length > 0 || predefinedInstances.length > 0
 
