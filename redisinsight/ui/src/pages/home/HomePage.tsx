@@ -35,6 +35,7 @@ import {
   resetImportInstances,
   setEditedInstance,
 } from 'uiSrc/slices/instances/instances'
+import { fetchTags } from 'uiSrc/slices/instances/tags'
 import { localStorageService } from 'uiSrc/services'
 import {
   resetDataSentinel,
@@ -62,12 +63,14 @@ import DatabasesList from './components/database-list-component'
 import DatabaseListHeader from './components/database-list-header'
 import EmptyMessage from './components/empty-message/EmptyMessage'
 import DatabasePanelDialog from './components/database-panel-dialog'
+import { ManageTagsModal } from './components/database-manage-tags-modal/ManageTagsModal'
 
 import './styles.scss'
 import styles from './styles.module.scss'
 
 enum OpenDialogName {
   AddDatabase = 'add',
+  ManageTags = 'manage-tags',
   EditDatabase = 'edit',
 }
 
@@ -120,6 +123,7 @@ const HomePage = () => {
     dispatch(resetInstancesRedisCluster())
     dispatch(resetSubscriptionsRedisCloud())
     dispatch(fetchCreateRedisButtonsAction())
+    dispatch(fetchTags())
 
     return () => {
       dispatch(setEditedInstance(null))
@@ -163,10 +167,15 @@ const HomePage = () => {
   }, [instances])
 
   const handleOpenPage = (instances: Instance[]) => {
+    const instancesWithTagsCount = instances.filter(
+      (instance) => instance.tags && instance.tags.length > 0,
+    ).length
+
     sendPageViewTelemetry({
       name: TelemetryPageView.DATABASES_LIST_PAGE,
       eventData: {
         instancesCount: instances.length,
+        instancesWithTagsCount,
       },
     })
   }
@@ -215,6 +224,11 @@ const HomePage = () => {
     dispatch(setEditedInstance(null))
   }
 
+  const handleManageInstanceTags = (instance: Instance) => {
+    dispatch(setEditedInstance(instance))
+    setOpenDialog(OpenDialogName.ManageTags)
+  }
+
   const handleEditInstance = (editedInstance: Instance) => {
     if (editedInstance) {
       dispatch(fetchEditedInstanceAction(editedInstance))
@@ -244,7 +258,7 @@ const HomePage = () => {
               key="instance-controls"
               onAddInstance={handleAddInstance}
             />
-            {!!openDialog && (
+            {openDialog && openDialog !== OpenDialogName.ManageTags && (
               <DatabasePanelDialog
                 editMode={openDialog === OpenDialogName.EditDatabase}
                 urlHandlingAction={action}
@@ -261,6 +275,12 @@ const HomePage = () => {
                 onDbEdited={onDbEdited}
               />
             )}
+            {openDialog === OpenDialogName.ManageTags && editedInstance && (
+              <ManageTagsModal
+                instance={editedInstance}
+                onClose={handleClose}
+              />
+            )}
             <div key="homePage" className="homePage">
               {!isInstanceExists && !loading && !loadingChanging ? (
                 <EuiPanel className={styles.emptyPanel} borderRadius="none">
@@ -274,6 +294,7 @@ const HomePage = () => {
                   editedInstance={editedInstance}
                   onEditInstance={handleEditInstance}
                   onDeleteInstances={handleDeleteInstances}
+                  onManageInstanceTags={handleManageInstanceTags}
                 />
               )}
             </div>
